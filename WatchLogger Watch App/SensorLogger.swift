@@ -8,7 +8,7 @@
 import Foundation
 import CoreMotion
 
-class SensorLogger: ObservableObject {
+class SensorLogger {
     let motionManager = CMMotionManager()
     let csvManager = LogDataCSVManager()
     
@@ -82,7 +82,7 @@ class SensorLogger: ObservableObject {
     }
     
     /// CSVに記録する
-    func saveAsCsv() async throws {
+    func saveAsCsv() throws {
         if csvManager.isRecording {
             csvManager.stopRecording()
             

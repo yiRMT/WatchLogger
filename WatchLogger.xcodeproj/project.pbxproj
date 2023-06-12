@@ -16,6 +16,8 @@
 		6726D2EA2A36B44B0005DAC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726D2E92A36B44B0005DAC5 /* ContentView.swift */; };
 		6726D2EC2A36B44B0005DAC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6726D2EB2A36B44B0005DAC5 /* Assets.xcassets */; };
 		6726D2EF2A36B44B0005DAC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6726D2EE2A36B44B0005DAC5 /* Preview Assets.xcassets */; };
+		6726D2FF2A36BCBD0005DAC5 /* LogDataCSVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726D2FC2A36B65D0005DAC5 /* LogDataCSVManager.swift */; };
+		6726D3002A36BCC00005DAC5 /* SensorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726D2FA2A36B5F70005DAC5 /* SensorLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		6726D2E92A36B44B0005DAC5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6726D2EB2A36B44B0005DAC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6726D2EE2A36B44B0005DAC5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6726D2FA2A36B5F70005DAC5 /* SensorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLogger.swift; sourceTree = "<group>"; };
+		6726D2FC2A36B65D0005DAC5 /* LogDataCSVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDataCSVManager.swift; sourceTree = "<group>"; };
+		6726D2FE2A36BACF0005DAC5 /* WatchLogger-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchLogger-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,9 @@
 		6726D2E62A36B44B0005DAC5 /* WatchLogger Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				6726D2FA2A36B5F70005DAC5 /* SensorLogger.swift */,
+				6726D2FC2A36B65D0005DAC5 /* LogDataCSVManager.swift */,
+				6726D2FE2A36BACF0005DAC5 /* WatchLogger-Watch-App-Info.plist */,
 				6726D2E72A36B44B0005DAC5 /* WatchLoggerApp.swift */,
 				6726D2E92A36B44B0005DAC5 /* ContentView.swift */,
 				6726D2EB2A36B44B0005DAC5 /* Assets.xcassets */,
@@ -242,6 +250,8 @@
 			files = (
 				6726D2EA2A36B44B0005DAC5 /* ContentView.swift in Sources */,
 				6726D2E82A36B44B0005DAC5 /* WatchLoggerApp.swift in Sources */,
+				6726D2FF2A36BCBD0005DAC5 /* LogDataCSVManager.swift in Sources */,
+				6726D3002A36BCC00005DAC5 /* SensorLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +391,9 @@
 				DEVELOPMENT_TEAM = UGT958AYQJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchLogger-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchLogger;
+				INFOPLIST_KEY_NSMotionUsageDescription = "This app will collect motion data from your Apple Watch.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.imp.WatchLogger;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -411,7 +423,9 @@
 				DEVELOPMENT_TEAM = UGT958AYQJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchLogger-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchLogger;
+				INFOPLIST_KEY_NSMotionUsageDescription = "This app will collect motion data from your Apple Watch.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.imp.WatchLogger;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -18,6 +18,8 @@
 		6726D2EF2A36B44B0005DAC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6726D2EE2A36B44B0005DAC5 /* Preview Assets.xcassets */; };
 		6726D2FF2A36BCBD0005DAC5 /* LogDataCSVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726D2FC2A36B65D0005DAC5 /* LogDataCSVManager.swift */; };
 		6726D3002A36BCC00005DAC5 /* SensorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6726D2FA2A36B5F70005DAC5 /* SensorLogger.swift */; };
+		67D3B1522A37444D00895D13 /* WatchLoggerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D3B1512A37444D00895D13 /* WatchLoggerViewModel.swift */; };
+		67D3B1542A385E6000895D13 /* WatchLoggerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D3B1532A385E6000895D13 /* WatchLoggerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		6726D2FA2A36B5F70005DAC5 /* SensorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLogger.swift; sourceTree = "<group>"; };
 		6726D2FC2A36B65D0005DAC5 /* LogDataCSVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDataCSVManager.swift; sourceTree = "<group>"; };
 		6726D2FE2A36BACF0005DAC5 /* WatchLogger-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchLogger-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		67D3B1512A37444D00895D13 /* WatchLoggerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLoggerViewModel.swift; sourceTree = "<group>"; };
+		67D3B1532A385E6000895D13 /* WatchLoggerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLoggerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6726D2D52A36B44A0005DAC5 /* WatchLoggerApp.swift */,
+				67D3B1532A385E6000895D13 /* WatchLoggerViewModel.swift */,
 				6726D2D72A36B44A0005DAC5 /* ContentView.swift */,
 				6726D2D92A36B44B0005DAC5 /* Assets.xcassets */,
 				6726D2DB2A36B44B0005DAC5 /* Preview Content */,
@@ -122,6 +127,7 @@
 				6726D2FC2A36B65D0005DAC5 /* LogDataCSVManager.swift */,
 				6726D2FE2A36BACF0005DAC5 /* WatchLogger-Watch-App-Info.plist */,
 				6726D2E72A36B44B0005DAC5 /* WatchLoggerApp.swift */,
+				67D3B1512A37444D00895D13 /* WatchLoggerViewModel.swift */,
 				6726D2E92A36B44B0005DAC5 /* ContentView.swift */,
 				6726D2EB2A36B44B0005DAC5 /* Assets.xcassets */,
 				6726D2ED2A36B44B0005DAC5 /* Preview Content */,
@@ -239,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67D3B1542A385E6000895D13 /* WatchLoggerViewModel.swift in Sources */,
 				6726D2D82A36B44A0005DAC5 /* ContentView.swift in Sources */,
 				6726D2D62A36B44A0005DAC5 /* WatchLoggerApp.swift in Sources */,
 			);
@@ -250,6 +257,7 @@
 			files = (
 				6726D2EA2A36B44B0005DAC5 /* ContentView.swift in Sources */,
 				6726D2E82A36B44B0005DAC5 /* WatchLoggerApp.swift in Sources */,
+				67D3B1522A37444D00895D13 /* WatchLoggerViewModel.swift in Sources */,
 				6726D2FF2A36BCBD0005DAC5 /* LogDataCSVManager.swift in Sources */,
 				6726D3002A36BCC00005DAC5 /* SensorLogger.swift in Sources */,
 			);

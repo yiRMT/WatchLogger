@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WatchConnectivity
 
 class LogDataCSVManager {
     private(set) var isRecording = false
@@ -27,7 +28,7 @@ class LogDataCSVManager {
         }
         isRecording = true
     }
-    
+        
     func stopRecording() {
         isRecording = false
     }

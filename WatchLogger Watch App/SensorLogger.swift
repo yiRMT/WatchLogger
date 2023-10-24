@@ -32,11 +32,19 @@ class SensorLogger {
     }
     
     /// Stop or resume sensor data
-    func stopSensorUpdates() {
+    func stopSensorUpdates() throws {
         csvManager.stopRecording()
         
         if motionManager.isDeviceMotionAvailable {
             motionManager.stopDeviceMotionUpdates()
+        }
+           
+        format.dateFormat = "yyyy-MMdd-HHmmss"
+        let dateText = format.string(from: Date())
+        do {
+            try csvManager.saveSensorDataToCsv(fileName: "watchmotion_" + dateText)
+        } catch {
+            throw error
         }
     }
     
@@ -76,6 +84,8 @@ class SensorLogger {
             text += String(acc.x) + ","
             text += String(acc.y) + ","
             text += String(acc.z)
+            
+            print(attitude)
             
             csvManager.addRecordText(addText: text)
         }

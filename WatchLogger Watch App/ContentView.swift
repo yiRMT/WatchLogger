@@ -8,77 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var recordingState: RecordingState = .stop
+    @State var isRecording = false
+    @State var loggingRate: Double = 50
     var logger = SensorLogger()
+    var viewModel = WatchLoggerViewModel()
     var body: some View {
         VStack {
-            Text("Watch Logger")
-                .bold()
-                .multilineTextAlignment(.center)
-            Spacer()
-            switch recordingState {
-            case .start:
-                VStack {
-                    Button {
-                        logger.stopSensorUpdates()
-                        recordingState = .resume
-                    } label: {
-                        Text("Resume Recording")
-                    }
-                    .foregroundStyle(.yellow)
-                    Button {
-                        do {
-                            try logger.saveAsCsv()
-                            recordingState = .stop
-                        } catch {
-                            print(error)
-                        }
-                    } label: {
-                        Text("Stop Recording")
-                    }
-                    .foregroundStyle(.red)
-                }
-            case .resume:
-                VStack {
-                    Button {
-                        logger.startSensorUpdates(reset: false)
-                        recordingState = .start
-                    } label: {
-                        Text("Start Recording")
-                    }
-                    .foregroundStyle(.green)
-                    Button {
-                        do {
-                            try logger.saveAsCsv()
-                            recordingState = .stop
-                        } catch {
-                            print(error)
-                        }
-                    } label: {
-                        Text("Stop Recording")
-                    }
-                    .foregroundStyle(.red)
-                }
-            case .stop:
-                VStack {
-                    Button {
-                        logger.startSensorUpdates(reset: true)
-                        recordingState = .start
-                    } label: {
-                        Text("Start Recording")
-                    }
-                    .foregroundStyle(.green)
-                }
+            HStack {
+                Image(systemName: "applewatch.side.right")
+                    .imageScale(.large)
+                Text("Watch Logger")
+                    .bold()
             }
-            
+            VStack {
+                Button {
+                    logger.startSensorUpdates(reset: true, intervalSeconds: 1.0/loggingRate)
+                    isRecording.toggle()
+                } label: {
+                    Text("Start Recording")
+                }
+                .foregroundStyle(.green)
+                .opacity(isRecording ? 0.5 : 1.0)
+                .disabled(isRecording)
+                
+                Button {
+                    do {
+                        try logger.stopSensorUpdates()
+                        isRecording.toggle()
+                    } catch {
+                        print(error)
+                    }
+                } label: {
+                    Text("Stop Recording")
+                }
+                .foregroundStyle(.red)
+                .opacity(!isRecording ? 0.5 : 1.0)
+                .disabled(!isRecording)
+                Text("\(String(format: "%.1f", loggingRate)) Hz")
+                Slider(value: $loggingRate,
+                       in: 10.0...100.0
+                )
+            }
+            .padding(.vertical)
         }
         .padding()
     }
     
     enum RecordingState {
-        case start
-        case resume
-        case stop
+        case recording
+        case stopping
     }
 }
 

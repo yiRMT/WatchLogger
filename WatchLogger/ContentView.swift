@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import Charts
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack {
+                Image(systemName: "applewatch.side.right")
+                    .imageScale(.large)
+                Text("Watch Logger")
+                    .bold()
+            }
+            Spacer()
         }
         .padding()
     }

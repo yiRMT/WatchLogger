@@ -13,7 +13,15 @@ final class WatchLoggerViewModel: NSObject, ObservableObject {
     
     init(session: WCSession = .default) {
         self.session = session
-        //self.session.delegate = self
+        super.init()
+        self.session.delegate = self
+        session.activate()
+    }
+    
+    func sendMessage(message: [String : Any]) {
+        session.sendMessage(message, replyHandler: nil) { (error) in
+            print(error.localizedDescription)
+        }
     }
 }
 

@@ -11,7 +11,9 @@ import SwiftUI
 struct WatchLogger_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                viewModel: WatchLoggerViewModel()
+            )
         }
     }
 }

@@ -9,6 +9,8 @@ import SwiftUI
 import Charts
 
 struct ContentView: View {
+    @StateObject var viewModel: WatchLoggerViewModel
+    
     var body: some View {
         VStack {
             HStack {
@@ -17,6 +19,7 @@ struct ContentView: View {
                 Text("Watch Logger")
                     .bold()
             }
+            Text(viewModel.isPaired ? "YES": "NO")
             Spacer()
         }
         .padding()
@@ -24,5 +27,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(
+        viewModel: WatchLoggerViewModel(
+            stateModel: ConnectivityStateModel()
+        )
+    )
 }

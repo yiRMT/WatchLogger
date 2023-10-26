@@ -11,7 +11,7 @@ struct ContentView: View {
     @State var isRecording = false
     @State var loggingRate: Double = 50
     var logger = SensorLogger()
-    var viewModel = WatchLoggerViewModel()
+    @StateObject var viewModel: WatchLoggerViewModel
     var body: some View {
         VStack {
             HStack {
@@ -22,8 +22,9 @@ struct ContentView: View {
             }
             VStack {
                 Button {
-                    logger.startSensorUpdates(reset: true, intervalSeconds: 1.0/loggingRate)
-                    isRecording.toggle()
+                    viewModel.sendMessage(message: ["state": true])
+//                    logger.startSensorUpdates(reset: true, intervalSeconds: 1.0/loggingRate)
+//                    isRecording.toggle()
                 } label: {
                     Text("Start Recording")
                 }
@@ -44,10 +45,6 @@ struct ContentView: View {
                 .foregroundStyle(.red)
                 .opacity(!isRecording ? 0.5 : 1.0)
                 .disabled(!isRecording)
-                Text("\(String(format: "%.1f", loggingRate)) Hz")
-                Slider(value: $loggingRate,
-                       in: 10.0...100.0
-                )
             }
             .padding(.vertical)
         }
@@ -61,5 +58,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(
+        viewModel: WatchLoggerViewModel()
+    )
 }

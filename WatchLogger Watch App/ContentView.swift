@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isRecording = false
     @State var loggingRate: Double = 50
-    var logger = SensorLogger()
     @StateObject var viewModel: WatchLoggerViewModel
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,29 +21,23 @@ struct ContentView: View {
             }
             VStack {
                 Button {
-                    viewModel.sendMessage(message: ["state": true])
-//                    logger.startSensorUpdates(reset: true, intervalSeconds: 1.0/loggingRate)
-//                    isRecording.toggle()
+                    viewModel.startSensorUpdates()
+                    
                 } label: {
                     Text("Start Recording")
                 }
                 .foregroundStyle(.green)
-                .opacity(isRecording ? 0.5 : 1.0)
-                .disabled(isRecording)
+                .opacity(viewModel.isRecording ? 0.5 : 1.0)
+                .disabled(viewModel.isRecording)
                 
                 Button {
-                    do {
-                        try logger.stopSensorUpdates()
-                        isRecording.toggle()
-                    } catch {
-                        print(error)
-                    }
+                    viewModel.stopSensorUpdates()
                 } label: {
                     Text("Stop Recording")
                 }
                 .foregroundStyle(.red)
-                .opacity(!isRecording ? 0.5 : 1.0)
-                .disabled(!isRecording)
+                .opacity(!viewModel.isRecording ? 0.5 : 1.0)
+                .disabled(!viewModel.isRecording)
             }
             .padding(.vertical)
         }
@@ -55,6 +48,8 @@ struct ContentView: View {
         case recording
         case stopping
     }
+    
+    
 }
 
 #Preview {

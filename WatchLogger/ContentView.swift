@@ -19,7 +19,25 @@ struct ContentView: View {
                 Text("Watch Logger")
                     .bold()
             }
-            Text(viewModel.isPaired ? "YES": "NO")
+            Text(viewModel.logString)
+            Button {
+                viewModel.startSensorUpdates()
+                
+            } label: {
+                Text("Start Recording")
+            }
+            .foregroundStyle(.green)
+            .opacity(viewModel.isRecording ? 0.5 : 1.0)
+            .disabled(viewModel.isRecording)
+            
+            Button {
+                viewModel.stopSensorUpdates()
+            } label: {
+                Text("Stop Recording")
+            }
+            .foregroundStyle(.red)
+            .opacity(!viewModel.isRecording ? 0.5 : 1.0)
+            .disabled(!viewModel.isRecording)
             Spacer()
         }
         .padding()

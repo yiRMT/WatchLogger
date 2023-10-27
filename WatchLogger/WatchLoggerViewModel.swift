@@ -10,6 +10,8 @@ import WatchConnectivity
 
 final class WatchLoggerViewModel: NSObject, ObservableObject {
     @Published var stateModel: ConnectivityStateModel
+    @Published var logString = ""
+    @Published private(set) var isRecording = false
     
     private var session: WCSession
     
@@ -19,6 +21,18 @@ final class WatchLoggerViewModel: NSObject, ObservableObject {
         super.init()
         self.session.delegate = self
         session.activate()
+    }
+    
+    func startSensorUpdates() {
+        isRecording = true
+        let message = ["isRecording": isRecording]
+        session.sendMessage(message, replyHandler: nil)
+    }
+    
+    func stopSensorUpdates() {
+        isRecording = false
+        let message = ["isRecording": isRecording]
+        session.sendMessage(message, replyHandler: nil)
     }
     
     var isPaired: Bool {
@@ -80,5 +94,15 @@ extension WatchLoggerViewModel: WCSessionDelegate {
         } else {
             print("The session has completed activation.")
         }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        let string = String(decoding: messageData, as: UTF8.self)
+        logString = string
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        guard let isRecording = message["isRecording"] else { return }
+        self.isRecording = isRecording as! Bool
     }
 }
